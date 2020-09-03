@@ -8,7 +8,7 @@ public class CharacterMovement : MonoBehaviour
 	private int jumpCount;
 	private float yAxisVar;
 
-	public float mySpeed = 3f, myRotateSpeed = 30f, myJumpForce = 10f, myGravity = -9.81f;
+	public float mySpeed = 5f, myRotateSpeed = 150f, myJumpForce = 5f, myGravity = -9.81f;
 	public int maxJumpCount = 2;
 	
 	void Start()
@@ -19,7 +19,8 @@ public class CharacterMovement : MonoBehaviour
 
 	void Update()
 	{
-		var verticalInput = Input.GetAxis("Vertical") * Time.deltaTime * mySpeed;
+		//perhaps put horizontalInput in Z in Set function for character to move unlike a car. Use this code for controlling Chrysalises.
+		var verticalInput = Input.GetAxis("Vertical") * mySpeed;
 		v3Movement.Set(verticalInput, yAxisVar, 0);
 
 		var horizontalInput = Input.GetAxis("Horizontal") * Time.deltaTime * myRotateSpeed;
