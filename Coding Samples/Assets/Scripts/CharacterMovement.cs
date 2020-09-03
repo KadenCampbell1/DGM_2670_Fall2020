@@ -1,17 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class CharacterMovement : MonoBehaviour
 {
 	private CharacterController myController;
-	private Vector3 myV3Movement;
-	public float mySpeed = 1f;
-	public float myGravity = -9.81f;
-	public bool canJump;
-	public int maxJumpCount;
+	private Vector3 v3Movement;
+	private int jumpCount;
+	private float yAxisVar;
 
+	public float mySpeed = 3f, myRotateSpeed = 30f, myJumpForce = 10f, myGravity = -9.81f;
+	public int maxJumpCount = 2;
+	
 	void Start()
 	{
 	    myController = GetComponent<CharacterController>();
@@ -20,29 +19,28 @@ public class CharacterMovement : MonoBehaviour
 
 	void Update()
 	{
-	    if(Input.GetKeyDown(KeyCode.A))
-		{
-			//myV3Movement.x *= -Input.GetAxis("Horizontal") * mySpeed;
-			myV3Movement.x += -mySpeed;
-		}      
+		var verticalInput = Input.GetAxis("Vertical") * Time.deltaTime * mySpeed;
+		v3Movement.Set(verticalInput, yAxisVar, 0);
 
-		if(Input.GetKeyDown(KeyCode.D))
+		var horizontalInput = Input.GetAxis("Horizontal") * Time.deltaTime * myRotateSpeed;
+		transform.Rotate(0, horizontalInput, 0);
+
+		yAxisVar += myGravity * Time.deltaTime;
+
+		if (myController.isGrounded && v3Movement.y < 0)
 		{
-			//myV3Movement.x *= Input.GetAxis("Horizontal") * mySpeed;
-			myV3Movement.x += mySpeed;
+			yAxisVar = -1f;
+			jumpCount = 0;
 		}
 
-		if(!myController.isGrounded)
+		if (Input.GetButtonDown("Jump") && jumpCount < maxJumpCount)
 		{
-			myV3Movement.y += myGravity;
-		}
-		else
-		{
-			myV3Movement.y = 0;
+			yAxisVar = myJumpForce;
+			jumpCount++;
 		}
 
-		myV3Movement = transform.TransformDirection(myV3Movement);
-		myController.Move(myV3Movement * Time.deltaTime);
+		v3Movement = transform.TransformDirection(v3Movement);
+		myController.Move(v3Movement * Time.deltaTime);
 	}
 }
 
