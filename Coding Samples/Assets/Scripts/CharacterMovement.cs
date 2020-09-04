@@ -8,7 +8,7 @@ public class CharacterMovement : MonoBehaviour
 	private int jumpCount;
 	private float yAxisVar;
 
-	public float mySpeed = 5f, myRotateSpeed = 150f, myJumpForce = 5f, myGravity = -9.81f;
+	public float mySpeed = 5f, myRunSpeed = 10f, myRotateSpeed = 150f, myJumpForce = 5f, myGravity = -9.81f;
 	public int maxJumpCount = 2;
 	
 	void Start()
@@ -19,6 +19,17 @@ public class CharacterMovement : MonoBehaviour
 
 	void Update()
 	{
+		if (Input.GetButtonDown("Fire3"))
+		{
+			mySpeed += myRunSpeed;
+			myRotateSpeed += myRunSpeed * 10;
+		}
+		else if (Input.GetButtonUp("Fire3"))
+		{
+			mySpeed -= myRunSpeed;
+			myRotateSpeed -= myRunSpeed * 10;
+		}
+		
 		//perhaps put horizontalInput in Z in Set function for character to move unlike a car. Use this code for controlling Chrysalises.
 		var verticalInput = Input.GetAxis("Vertical") * mySpeed;
 		v3Movement.Set(verticalInput, yAxisVar, 0);
