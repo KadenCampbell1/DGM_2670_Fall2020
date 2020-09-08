@@ -348,6 +348,7 @@ MonoBehaviour:
   myCarSpeed: 20
   myRotateSpeed: 150
   myRotateBoost: 100
+  horizontalRotation: 0
   myJumpForce: 5
   myGravity: -9.81
   maxJumpCount: 2

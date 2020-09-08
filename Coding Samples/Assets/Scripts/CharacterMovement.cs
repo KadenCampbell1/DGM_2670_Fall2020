@@ -47,7 +47,15 @@ public class CharacterMovement : MonoBehaviour
 			
 			var verticalInput = Input.GetAxis("Vertical") * mySpeed;
 			var horizontalInput = Input.GetAxis("Horizontal") * mySpeed;
+			
+			
+			var lookVertical = Input.GetAxis("Vertical");
+			var lookHorizontal = Input.GetAxis("Horizontal");
+			var lookDirection = new Vector3(lookHorizontal, 0f, lookVertical);
+			
+
 			v3Movement.Set(horizontalInput, yAxisVar, verticalInput);
+			transform.rotation = Quaternion.LookRotation(lookDirection);
 		}
 		if (drivingCar)
 		{
@@ -65,9 +73,11 @@ public class CharacterMovement : MonoBehaviour
 			
 			var horizontalInput = Input.GetAxis("Horizontal") * Time.deltaTime * myRotateSpeed;
 			transform.Rotate(0, horizontalInput, 0);
+			
+			v3Movement = transform.TransformDirection(v3Movement);
 		}
 		
-		v3Movement = transform.TransformDirection(v3Movement);
+		
 		myController.Move(v3Movement * Time.deltaTime);
 	}
 }
