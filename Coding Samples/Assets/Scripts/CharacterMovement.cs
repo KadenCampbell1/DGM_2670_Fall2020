@@ -8,9 +8,9 @@ public class CharacterMovement : MonoBehaviour
 	private int jumpCount;
 	private float yAxisVar;
 
-	public float mySpeed = 5f, myRunSpeed = 10f, myCarSpeed = 20f, myRotateSpeed = 150f, myRotateBoost = 100f, myJumpForce = 5f, myGravity = -9.81f;
+	public float mySpeed = 5f, mySpeedOriginal = 5f, myRunSpeed = 10f, dodgeForce = 15f, myCarSpeed = 20f, myRotateSpeed = 150f, myRotateBoost = 100f, myJumpForce = 5f, myGravity = -9.81f;
 	public int maxJumpCount = 2;
-	public bool drivingCar = false;
+	public bool drivingCar, canDodge;
 	
 	void Start()
 	{
@@ -44,16 +44,27 @@ public class CharacterMovement : MonoBehaviour
 				yAxisVar = myJumpForce;
 				jumpCount++;
 			}
+
+			if (Input.GetButtonDown("Fire1")) 
+			{ 
+				Debug.Log("Dodge"); 
+				mySpeed = dodgeForce; 
+				canDodge = false;
+			}
+			
+			if (Input.GetButtonUp("Fire1")) 
+			{ 
+				mySpeed = mySpeedOriginal; 
+				canDodge = true;
+			}
+			
 			
 			var verticalInput = Input.GetAxis("Vertical") * mySpeed;
 			var horizontalInput = Input.GetAxis("Horizontal") * mySpeed;
 			
 			
-			var lookVertical = Input.GetAxis("Vertical");
-			var lookHorizontal = Input.GetAxis("Horizontal");
-			var lookDirection = new Vector3(lookHorizontal, 0f, lookVertical);
+			var lookDirection = new Vector3(horizontalInput / mySpeed, 0f, verticalInput / mySpeed);
 			
-
 			v3Movement.Set(horizontalInput, yAxisVar, verticalInput);
 			transform.rotation = Quaternion.LookRotation(lookDirection);
 		}
