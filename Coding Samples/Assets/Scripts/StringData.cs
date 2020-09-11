@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu]
 public class StringData : ScriptableObject
 {
-    public string stringName;
+    public string myValue;
 }

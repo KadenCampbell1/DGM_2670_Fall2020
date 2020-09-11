@@ -1,20 +1,28 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class CharacterMovement : MonoBehaviour
 {
 	private CharacterController myController;
 	private Vector3 v3Movement;
-	private int jumpCount;
 	private float yAxisVar;
 
-	public float mySpeed = 5f, mySpeedOriginal = 5f, myRunSpeed = 10f, dodgeForce = 15f, myCarSpeed = 20f, myRotateSpeed = 150f, myRotateBoost = 100f, myJumpForce = 5f, myGravity = -9.81f;
-	public int maxJumpCount = 2;
+	public float dodgeForce = 15f, myRotateSpeed = 150f, myRotateBoost = 100f, myJumpForce = 5f, myGravity = -9.81f;
 	public bool drivingCar, canDodge;
+
+	public FloatData normalSpeed, fastSpeed, myCarSpeed;
+	private FloatData currentSpeed;
+
+	public IntData playerJumpMax;
+	private int jumpCount;
+
+	public Vector3Data currentSpawnPoint;
 	
 	void Start()
 	{
 	    myController = GetComponent<CharacterController>();
+	    currentSpeed = normalSpeed;
 	}
 
 
@@ -32,14 +40,14 @@ public class CharacterMovement : MonoBehaviour
 		{
 			if (Input.GetButtonDown("Fire3"))
 			{
-				mySpeed += myRunSpeed;
+				currentSpeed = fastSpeed;
 			}
 			else if (Input.GetButtonUp("Fire3"))
 			{
-				mySpeed -= myRunSpeed;
+				currentSpeed = normalSpeed;
 			}
 			
-			if (Input.GetButtonDown("Jump") && jumpCount < maxJumpCount)
+			if (Input.GetButtonDown("Jump") && jumpCount < playerJumpMax.myValue)
 			{
 				yAxisVar = myJumpForce;
 				jumpCount++;
@@ -48,29 +56,29 @@ public class CharacterMovement : MonoBehaviour
 			if (Input.GetButtonDown("Fire1")) 
 			{ 
 				Debug.Log("Dodge"); 
-				mySpeed = dodgeForce; 
+				//mySpeed = dodgeForce; 
 				canDodge = false;
 			}
 			
 			if (Input.GetButtonUp("Fire1")) 
 			{ 
-				mySpeed = mySpeedOriginal; 
+				currentSpeed = normalSpeed; 
 				canDodge = true;
 			}
 			
 			
-			var verticalInput = Input.GetAxis("Vertical") * mySpeed;
-			var horizontalInput = Input.GetAxis("Horizontal") * mySpeed;
+			var verticalInput = Input.GetAxis("Vertical") * currentSpeed.myValue;
+			var horizontalInput = Input.GetAxis("Horizontal") * currentSpeed.myValue;
 			
 			
-			var lookDirection = new Vector3(horizontalInput / mySpeed, 0f, verticalInput / mySpeed);
+			var lookDirection = new Vector3(horizontalInput / currentSpeed.myValue, 0f, verticalInput / currentSpeed.myValue);
 			
 			v3Movement.Set(horizontalInput, yAxisVar, verticalInput);
 			transform.rotation = Quaternion.LookRotation(lookDirection);
 		}
 		if (drivingCar)
 		{
-			var verticalInput = Input.GetAxis("Vertical") * myCarSpeed;
+			var verticalInput = Input.GetAxis("Vertical") * myCarSpeed.myValue;
 			v3Movement.Set(verticalInput, yAxisVar, 0);
 			
 			if (Input.GetButtonDown("Fire3"))
@@ -90,6 +98,11 @@ public class CharacterMovement : MonoBehaviour
 		
 		
 		myController.Move(v3Movement * Time.deltaTime);
+	}
+
+	private void OnEnable()
+	{
+		gameObject.transform.position = currentSpawnPoint.myValue;
 	}
 }
 

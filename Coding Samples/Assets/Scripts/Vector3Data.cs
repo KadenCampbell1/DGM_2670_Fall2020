@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class IntData : ScriptableObject
+public class Vector3Data : ScriptableObject
 {
-    public int myValue;
+    public Vector3 myValue;
 }
