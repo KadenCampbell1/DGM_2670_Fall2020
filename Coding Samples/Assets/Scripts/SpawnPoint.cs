@@ -5,20 +5,11 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    public Vector3Data spawnData, currentSpawnPoint;
-
-    private void Start()
-    {
-        currentSpawnPoint.myValue = spawnData.myValue;
-    }
+    public Vector3Data spawnData;
+    
 
     private void OnTriggerEnter(Collider other)
     {
-        spawnData.myValue = GetComponent<Transform>().position;
-    }
-
-    public void Spawn()
-    {
-        currentSpawnPoint.myValue = spawnData.myValue;
+        spawnData.SetValueFromTransform(transform.position);
     }
 }

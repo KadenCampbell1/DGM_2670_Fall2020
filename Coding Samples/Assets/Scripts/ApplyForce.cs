@@ -8,18 +8,12 @@ public class ApplyForce : MonoBehaviour
     private Rigidbody rBody;
 
     public float force = 30f;
-    // Start is called before the first frame update
+    
     void Start()
     {
         rBody = GetComponent<Rigidbody>();
         
         var forceDirection = new Vector3(force, 0f, 0f);
-        rBody.AddForce(forceDirection);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        rBody.AddRelativeForce(forceDirection);
     }
 }

@@ -6,4 +6,9 @@ using UnityEngine;
 public class Vector3Data : ScriptableObject
 {
     public Vector3 myValue;
+
+    public void SetValueFromTransform(Vector3 objTransform)
+    {
+        myValue = objTransform;
+    }
 }
