@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 205891037}
   - component: {fileID: 205891036}
   - component: {fileID: 205891039}
+  - component: {fileID: 205891040}
   m_Layer: 0
   m_Name: FireDirection
   m_TagString: Untagged
@@ -232,6 +233,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 7807941149237217069, guid: 857c99a63f8823c4b89fffca3e328712, type: 3}
+--- !u!114 &205891040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205891034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ea9ed045014404fb79a86bb6273117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookedAtObj: {fileID: 1693444427}
 --- !u!1 &668410810
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,6 +368,7 @@ GameObject:
   - component: {fileID: 686939322}
   - component: {fileID: 686939321}
   - component: {fileID: 686939320}
+  - component: {fileID: 686939324}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -438,6 +453,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &686939324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686939319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5104b707f91f10d4fbb888a06c64c88b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointObj: {fileID: 1693444427}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,3 +1006,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 11400000, guid: 7f22e4315757d2c4caec1c0bc39e5071, type: 2}
   damage: {fileID: 11400000, guid: 45d7ba0f8838e1744b32511de0ddab7e, type: 2}
+--- !u!1 &1693444426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1693444427}
+  m_Layer: 0
+  m_Name: Locator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1693444427
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693444426}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.1746639, y: 0.90019095, z: 0.5816474}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
