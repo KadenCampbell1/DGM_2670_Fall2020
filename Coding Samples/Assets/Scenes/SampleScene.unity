@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 205891036}
   - component: {fileID: 205891039}
   - component: {fileID: 205891040}
+  - component: {fileID: 205891041}
   m_Layer: 0
   m_Name: FireDirection
   m_TagString: Untagged
@@ -167,7 +168,7 @@ BoxCollider:
   m_GameObject: {fileID: 205891034}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -233,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 7807941149237217069, guid: 857c99a63f8823c4b89fffca3e328712, type: 3}
+  rotationDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &205891040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +248,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookedAtObj: {fileID: 1693444427}
+--- !u!114 &205891041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205891034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae2eac0440020bb40884d6fcb89aeb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceObj: {fileID: -5477634649321811093, guid: 857c99a63f8823c4b89fffca3e328712, type: 3}
 --- !u!1 &668410810
 GameObject:
   m_ObjectHideFlags: 0

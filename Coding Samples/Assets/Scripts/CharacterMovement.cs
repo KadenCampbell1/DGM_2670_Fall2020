@@ -53,14 +53,14 @@ public class CharacterMovement : MonoBehaviour
 				jumpCount++;
 			}
 
-			if (Input.GetButtonDown("Fire1")) 
+			if (Input.GetButtonDown("Fire2")) 
 			{ 
 				Debug.Log("Dodge"); 
 				//mySpeed = dodgeForce; 
 				canDodge = false;
 			}
 			
-			if (Input.GetButtonUp("Fire1")) 
+			if (Input.GetButtonUp("Fire2")) 
 			{ 
 				currentSpeed = normalSpeed; 
 				canDodge = true;

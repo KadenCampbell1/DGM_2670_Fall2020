@@ -24,7 +24,10 @@ public class Death : MonoBehaviour
         if (objHealth.myValue <= 0)
         {
             objForDeath.gameObject.SetActive(false);
-            playerLives.myValue--;
+            if (objForDeath.name == "Character")
+            {
+                playerLives.myValue--;
+            }
             if (objForDeath.name == "Character" && playerLives.myValue > 0)
             {
                 objForDeath.gameObject.transform.position = spawnLocation.myValue;
