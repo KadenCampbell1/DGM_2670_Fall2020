@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseLocator : MonoBehaviour
+public class MouseLocatorBehaviour : MonoBehaviour
 {
     private Camera myCamera;
 

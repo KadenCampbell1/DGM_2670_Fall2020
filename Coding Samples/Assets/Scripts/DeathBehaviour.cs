@@ -4,20 +4,13 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class Death : MonoBehaviour
+public class DeathBehaviour : MonoBehaviour
 {
     public IntData objHealth, playerLives, respawnHealth;
     public Vector3Data spawnLocation;
     public GameObject objForDeath;
-    private CharacterController characterController;
-
-    private void Start()
-    {
-        if (objForDeath.GetComponent<CharacterController>() == true)
-        {
-            characterController = GetComponent<CharacterController>();
-        }
-    }
+    public float waitTime = 3f;
+    
 
     private void Update()
     {
@@ -32,7 +25,7 @@ public class Death : MonoBehaviour
             {
                 objForDeath.gameObject.transform.position = spawnLocation.myValue;
                 objHealth.myValue = respawnHealth.myValue;
-                objForDeath.gameObject.SetActive(true);
+                StartCoroutine(Wait(waitTime));
             }
             if (playerLives.myValue < 0)
             {
@@ -43,9 +36,8 @@ public class Death : MonoBehaviour
 
     private IEnumerator Wait(float time)
     {
-        characterController.enabled = false;
         yield return new WaitForSeconds(time);
-        characterController.enabled = true;
+        objForDeath.gameObject.SetActive(true);
     }
     
 }

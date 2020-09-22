@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IncrementHealth : MonoBehaviour
+public class IncrementHealthBehaviour : MonoBehaviour
 {
     public IntData health, damage;
 

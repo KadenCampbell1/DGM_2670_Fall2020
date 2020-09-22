@@ -11,4 +11,9 @@ public class Vector3Data : ScriptableObject
     {
         myValue = objTransform;
     }
+
+    public void SetValueFromRotation(Transform objRotation)
+    {
+        myValue = objRotation.eulerAngles;
+    }
 }

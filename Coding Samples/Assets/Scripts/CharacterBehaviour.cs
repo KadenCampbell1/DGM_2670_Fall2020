@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class CharacterMovement : MonoBehaviour
+public class CharacterBehaviour : MonoBehaviour
 {
 	private CharacterController myController;
 	private Vector3 v3Movement;

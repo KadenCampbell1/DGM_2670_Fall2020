@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JumpPowerUp : MonoBehaviour
+public class JumpPowerUpBehaviour : MonoBehaviour
 {
     public IntData playerJumpCount, normalJumpCount, powerUpCount;
     public float waitTime = 2f;
