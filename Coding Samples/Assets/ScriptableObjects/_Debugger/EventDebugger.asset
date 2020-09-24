@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19723b321d9186b4eb3211591d8f8cd0, type: 3}
-  m_Name: LocationVector3
+  m_Script: {fileID: 11500000, guid: 5725047bccca1d647a66dbe924295e6d, type: 3}
+  m_Name: EventDebugger
   m_EditorClassIdentifier: 
-  myValue: {x: 0, y: 0, z: 0}

@@ -3,13 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LookAtBehaviour : MonoBehaviour
+public class TurretBehaviour : MonoBehaviour
 {
-    public Transform lookedAtObj;
-
-    public void Update()
+    public void OnLook(Vector3Data obj)
     {
-        transform.LookAt(lookedAtObj);
+        transform.LookAt(obj.myValue);
         var rotationDirection = transform.eulerAngles;
         rotationDirection.x = 0;
         transform.rotation = Quaternion.Euler(rotationDirection);
