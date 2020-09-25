@@ -10,6 +10,7 @@ public class TurretBehaviour : MonoBehaviour
         transform.LookAt(obj.myValue);
         var rotationDirection = transform.eulerAngles;
         rotationDirection.x = 0;
+        rotationDirection.y -= 90f;
         transform.rotation = Quaternion.Euler(rotationDirection);
     }
 }
