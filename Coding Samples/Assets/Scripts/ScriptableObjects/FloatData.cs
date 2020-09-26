@@ -6,4 +6,14 @@ using UnityEngine;
 public class FloatData : ScriptableObject
 {
     public float myValue;
+
+    public void IncrementFromCustomValue(float incrementValue)
+    {
+        myValue += incrementValue;
+    }
+
+    public void IncrementFromScriptableObject(FloatData data)
+    {
+        myValue += data.myValue;
+    }
 }
