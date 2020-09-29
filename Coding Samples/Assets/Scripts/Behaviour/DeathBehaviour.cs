@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class DeathBehaviour : MonoBehaviour
 {
-    public IntData objHealth, playerLives, respawnHealth;
+    public FloatData objHealth, respawnHealth;
+    public IntData playerLives;
     public Vector3Data spawnLocation;
     public GameObject objForDeath;
     public float waitTime = 3f;

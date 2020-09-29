@@ -17,8 +17,6 @@ public class CharacterBehaviour : MonoBehaviour
 	public IntData playerJumpMax;
 	private int jumpCount;
 
-	public Vector3Data currentSpawnPoint;
-	
 	void Start()
 	{
 	    myController = GetComponent<CharacterController>();
@@ -98,11 +96,6 @@ public class CharacterBehaviour : MonoBehaviour
 		
 		
 		myController.Move(v3Movement * Time.deltaTime);
-	}
-
-	private void OnEnable()
-	{
-		gameObject.transform.position = currentSpawnPoint.myValue;
 	}
 }
 

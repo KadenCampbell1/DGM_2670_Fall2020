@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    public IntData enemyHealthData;
-    public int enemyHealth;
+    public FloatData enemyHealthData;
+    public float enemyHealth;
 
     public void Start()
     {
         enemyHealth = enemyHealthData.myValue;
     }
 
-    public void IncrementEnemyHealthFromSO(IntData myInt)
+    public void IncrementEnemyHealthFromSO(FloatData myFlt)
     {
-        enemyHealth += myInt.myValue;
+        enemyHealth += myFlt.myValue;
     }
 }

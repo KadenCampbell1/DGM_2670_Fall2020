@@ -493,6 +493,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: ca2d0fc75a1ec0548a3898af4c75636c, type: 2}
+        m_TargetAssemblyTypeName: FloatData, Assembly-CSharp
+        m_MethodName: IncrementFromCustomValue
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,6 +610,7 @@ GameObject:
   - component: {fileID: 770785371}
   - component: {fileID: 770785370}
   - component: {fileID: 770785369}
+  - component: {fileID: 770785374}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -628,7 +641,6 @@ MonoBehaviour:
   fastSpeed: {fileID: 11400000, guid: 95eb4d10f670ae2459de38d26fe68d0b, type: 2}
   myCarSpeed: {fileID: 11400000, guid: 7758d2934e74d0b44b381c8c47c6bd14, type: 2}
   playerJumpMax: {fileID: 11400000, guid: a026bb4cb1b44bf409f4d2ff0b7be6a9, type: 2}
-  currentSpawnPoint: {fileID: 11400000, guid: ff6d5838ad8844e4eb16d398de0f988d, type: 2}
 --- !u!143 &770785370
 CharacterController:
   m_ObjectHideFlags: 0
@@ -711,6 +723,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &770785374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770785368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69d5c1d5c4a1ba649a8e4d1c89a606c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnableEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: ff6d5838ad8844e4eb16d398de0f988d, type: 2}
+        m_TargetAssemblyTypeName: Vector3Data, Assembly-CSharp
+        m_MethodName: SetPositionFromValue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 770785373}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  triggerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  playerTriggerCollision:
+    m_PersistentCalls:
+      m_Calls: []
+  enemyTriggerCollision:
+    m_PersistentCalls:
+      m_Calls: []
+  bulletTriggerCollision:
+    m_PersistentCalls:
+      m_Calls: []
+  waitTime: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,9 +878,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48fa77dba97b7524b98b2e860ec12eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objHealth: {fileID: 11400000, guid: 7f22e4315757d2c4caec1c0bc39e5071, type: 2}
+  objHealth: {fileID: 11400000, guid: c5f6d92d586f50c4fb9c552bef22b4e1, type: 2}
+  respawnHealth: {fileID: 11400000, guid: 1de43904311307845bb2f5a34c434ceb, type: 2}
   playerLives: {fileID: 11400000, guid: c46edeeeb8527904fbbb6c18908c4778, type: 2}
-  respawnHealth: {fileID: 11400000, guid: 0df118be4fef4944191774e6e9c0779e, type: 2}
   spawnLocation: {fileID: 11400000, guid: ff6d5838ad8844e4eb16d398de0f988d, type: 2}
   objForDeath: {fileID: 770785368}
   waitTime: 3
@@ -1042,64 +1097,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d19f569bc656ee418f8bc8eacba83f8, type: 3}
---- !u!1001 &6856331442348722050
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -6188444981669236398, guid: da73b86744b6a2548abd020c9e701da1, type: 3}
-      propertyPath: enemyHealth
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6856331441754980205, guid: da73b86744b6a2548abd020c9e701da1, type: 3}
-      propertyPath: m_Name
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 6856331441754980209, guid: da73b86744b6a2548abd020c9e701da1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 6856331441754980209, guid: da73b86744b6a2548abd020c9e701da1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.86
-      objectReference: {fileID: 0}
-    - target: {fileID: 6856331441754980209, guid: da73b86744b6a2548abd020c9e701da1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 6856331441754980209, guid: da73b86744b6a2548abd020c9e701da1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6856331441754980209, guid: da73b86744b6a2548abd020c9e701da1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6856331441754980209, guid: da73b86744b6a2548abd020c9e701da1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6856331441754980209, guid: da73b86744b6a2548abd020c9e701da1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6856331441754980209, guid: da73b86744b6a2548abd020c9e701da1, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6856331441754980209, guid: da73b86744b6a2548abd020c9e701da1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6856331441754980209, guid: da73b86744b6a2548abd020c9e701da1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6856331441754980209, guid: da73b86744b6a2548abd020c9e701da1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: da73b86744b6a2548abd020c9e701da1, type: 3}

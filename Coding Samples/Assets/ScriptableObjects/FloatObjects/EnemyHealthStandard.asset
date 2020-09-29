@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 247d7a950dbdb894e835d5a13cda5b9a, type: 3}
+  m_Script: {fileID: 11500000, guid: 03013689a4e21ab4f90b544178eb2239, type: 3}
   m_Name: EnemyHealthStandard
   m_EditorClassIdentifier: 
-  myValue: 50
+  myValue: 0
