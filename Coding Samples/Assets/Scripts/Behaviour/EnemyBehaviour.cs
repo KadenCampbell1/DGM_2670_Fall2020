@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    public FloatData enemyHealthData;
+    public FloatData enemyHealthData, damageData;
     public float enemyHealth;
 
     public void Start()
@@ -16,5 +16,13 @@ public class EnemyBehaviour : MonoBehaviour
     public void IncrementEnemyHealthFromSO(FloatData myFlt)
     {
         enemyHealth += myFlt.myValue;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "Bullet(Clone)")
+        {
+            IncrementEnemyHealthFromSO(damageData);
+        }
     }
 }

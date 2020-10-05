@@ -110,6 +110,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d5c1d5c4a1ba649a8e4d1c89a606c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  triggerEvent:
+    m_PersistentCalls:
+      m_Calls: []
   playerTriggerCollision:
     m_PersistentCalls:
       m_Calls:
@@ -131,6 +140,7 @@ MonoBehaviour:
   bulletTriggerCollision:
     m_PersistentCalls:
       m_Calls: []
+  waitTime: 0
 --- !u!114 &-6188444981669236398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,4 +154,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealthData: {fileID: 11400000, guid: 15a5cb324a9a5a44d9a4e605b08cd513, type: 2}
-  enemyHealth: 0
+  damageData: {fileID: 11400000, guid: 0ab8e26a2de13734fbd3f0ae396b7633, type: 2}
+  enemyHealth: 0.5

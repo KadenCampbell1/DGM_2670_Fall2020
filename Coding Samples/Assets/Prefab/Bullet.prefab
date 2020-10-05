@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65bd2a061f05cd44a848fbd58033dd06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 150
+  force: 300
 --- !u!114 &6781682789828878735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +153,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d5c1d5c4a1ba649a8e4d1c89a606c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  triggerEvent:
+    m_PersistentCalls:
+      m_Calls: []
   playerTriggerCollision:
     m_PersistentCalls:
       m_Calls: []
@@ -174,3 +183,4 @@ MonoBehaviour:
   bulletTriggerCollision:
     m_PersistentCalls:
       m_Calls: []
+  waitTime: 0
