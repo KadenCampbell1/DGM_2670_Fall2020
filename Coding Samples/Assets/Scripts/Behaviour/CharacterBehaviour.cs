@@ -6,7 +6,7 @@ using UnityEngine;
 public class CharacterBehaviour : MonoBehaviour
 {
 	private CharacterController myController;
-	private Vector3 v3Movement, knockBackMovement;
+	private Vector3 v3Movement, knockBackMovement = Vector3.zero;
 	private float yAxisVar;
 
 	public float dodgeForce = 15f, 
@@ -99,13 +99,13 @@ public class CharacterBehaviour : MonoBehaviour
 		}
 		
 		
-		myController.Move(v3Movement * Time.deltaTime);
+		myController.Move((v3Movement + knockBackMovement) * Time.deltaTime);
 	}
 
 	private IEnumerator KnockBack(ControllerColliderHit hit)
 	{
 		var i = 2f;
-		knockBackMovement = hit.collider.attachedRigidbody.velocity * i;
+		knockBackMovement = hit.collider.attachedRigidbody.velocity * (i * pushForce);
 		while (i > 0)
 		{
 			yield return new WaitForFixedUpdate();

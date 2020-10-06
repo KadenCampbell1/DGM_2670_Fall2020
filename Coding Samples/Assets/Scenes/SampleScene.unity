@@ -333,7 +333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &398450111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -717,7 +717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &770785369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -735,6 +735,7 @@ MonoBehaviour:
   myRotateBoost: 100
   myJumpForce: 5
   myGravity: -9.81
+  pushForce: 2
   drivingCar: 0
   canDodge: 0
   normalSpeed: {fileID: 11400000, guid: a4333b16ead02b44799661f508ba82de, type: 2}
@@ -972,7 +973,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845918196}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.24, y: 0.63, z: 0.11}
+  m_LocalPosition: {x: -5.33, y: 0.63, z: 0.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1069,7 +1070,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.2626114, y: 1e-45, z: 0, w: 0.9649017}
+  m_LocalRotation: {x: 0.2626114, y: -3e-45, z: 1e-45, w: 0.9649017}
   m_LocalPosition: {x: 0, y: 7.56, z: -11.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1383,7 +1384,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633582640}
-  m_LocalRotation: {x: 0.2626114, y: 1e-45, z: 0, w: 0.9649017}
+  m_LocalRotation: {x: 0.2626114, y: -3e-45, z: 1e-45, w: 0.9649017}
   m_LocalPosition: {x: 0, y: 7.56, z: -11.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
