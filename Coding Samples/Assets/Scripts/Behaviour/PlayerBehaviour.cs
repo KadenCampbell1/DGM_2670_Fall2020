@@ -7,12 +7,12 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour
 {
     private CharacterController controller;
-    private Vector3 movement;
+    private Vector3 movement, lookDirection;
     private float yVar;
-    private bool canMove = true;
+    private bool canMove = true, canJump = true, canSprint = true;
     private float gravity = -9.81f;
     public FloatData normalSpeed, fastSpeed, jumpForce;
-    private FloatData moveSpeed;
+    private FloatData currentSpeed;
     public IntData playerJumpMax;
     private int jumpCount;
     public float pushForce;
@@ -24,10 +24,25 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Start()
     {
-        moveSpeed = normalSpeed;
+        currentSpeed = normalSpeed;
         controller = GetComponent<CharacterController>();
         StartCoroutine(Move());
         wfs = new WaitForSeconds(waitTime);
+    }
+
+    private void Update()
+    {
+        if (Input.GetButton("Jump"))
+        {
+            canJump = false;
+            StartCoroutine(Jump());
+        }
+
+        if (Input.GetButton("Fire3"))
+        {
+            canSprint = false;
+            StartCoroutine(Sprint());
+        }
     }
 
 
@@ -37,20 +52,29 @@ public class PlayerBehaviour : MonoBehaviour
         while (canMove)
         {
             yield return wffu;
-            if (Input.GetButtonDown("Fire3"))
-            {
-                moveSpeed = fastSpeed;
-            }
-            else if (Input.GetButtonUp("Fire3"))
-            {
-                moveSpeed = normalSpeed;
-            }
-
-            var vInput = Input.GetAxis("Vertical") * moveSpeed.myValue * Time.deltaTime;
-            var hInput = Input.GetAxis("Horizontal") * moveSpeed.myValue * Time.deltaTime;
-
+            
             yVar += gravity * Time.deltaTime;
 
+            var vInput = Input.GetAxis("Vertical") * currentSpeed.myValue * Time.deltaTime;
+            var hInput = Input.GetAxis("Horizontal") * currentSpeed.myValue * Time.deltaTime;
+
+            lookDirection.Set(hInput, 0, vInput);
+            if (lookDirection != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(lookDirection);
+            }
+            
+            movement.Set(hInput, yVar, vInput);
+            controller.Move(movement);
+
+        }
+    }
+
+    private IEnumerator Jump()
+    {
+        canJump = true;
+        while (canJump)
+        {
             if (controller.isGrounded && movement.y < 0)
             {
                 yVar = -1;
@@ -62,15 +86,24 @@ public class PlayerBehaviour : MonoBehaviour
                 yVar = jumpForce.myValue;
                 jumpCount++;
             }
+            yield return wffu;
+        }
+    }
 
-            if (movement != Vector3.zero)
+    private IEnumerator Sprint()
+    {
+        canSprint = true;
+        while (canSprint)
+        {
+            if (Input.GetButtonDown("Fire3"))
             {
-                movement = transform.TransformDirection(movement);
+                currentSpeed = fastSpeed;
             }
-            
-            movement.Set(hInput, yVar, vInput);
-            controller.Move(movement);
-
+            else if (Input.GetButtonUp("Fire3"))
+            {
+                currentSpeed = normalSpeed;
+            }
+            yield return wffu;
         }
     }
 
