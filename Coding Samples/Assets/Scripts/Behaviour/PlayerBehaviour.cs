@@ -7,9 +7,10 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour
 {
     private CharacterController controller;
-    private Vector3 movement, lookDirection;
+    private Vector3 movement;
+    public Vector3 lookDirection, finalDirection;
     private float yVar;
-    private bool canMove = true, canJump = true, canSprint = true;
+    private bool canMove = true;
     private float gravity = -9.81f;
     public FloatData normalSpeed, fastSpeed, jumpForce;
     private FloatData currentSpeed;
@@ -17,32 +18,14 @@ public class PlayerBehaviour : MonoBehaviour
     private int jumpCount;
     public float pushForce;
     
-
-    public float waitTime;
+    
     private WaitForFixedUpdate wffu = new WaitForFixedUpdate();
-    private WaitForSeconds wfs;
 
     private void Start()
     {
         currentSpeed = normalSpeed;
         controller = GetComponent<CharacterController>();
         StartCoroutine(Move());
-        wfs = new WaitForSeconds(waitTime);
-    }
-
-    private void Update()
-    {
-        if (Input.GetButton("Jump"))
-        {
-            canJump = false;
-            StartCoroutine(Jump());
-        }
-
-        if (Input.GetButton("Fire3"))
-        {
-            canSprint = false;
-            StartCoroutine(Sprint());
-        }
     }
 
 
@@ -57,24 +40,7 @@ public class PlayerBehaviour : MonoBehaviour
 
             var vInput = Input.GetAxis("Vertical") * currentSpeed.myValue * Time.deltaTime;
             var hInput = Input.GetAxis("Horizontal") * currentSpeed.myValue * Time.deltaTime;
-
-            lookDirection.Set(hInput, 0, vInput);
-            if (lookDirection != Vector3.zero)
-            {
-                transform.rotation = Quaternion.LookRotation(lookDirection);
-            }
             
-            movement.Set(hInput, yVar, vInput);
-            controller.Move(movement);
-
-        }
-    }
-
-    private IEnumerator Jump()
-    {
-        canJump = true;
-        while (canJump)
-        {
             if (controller.isGrounded && movement.y < 0)
             {
                 yVar = -1;
@@ -86,15 +52,7 @@ public class PlayerBehaviour : MonoBehaviour
                 yVar = jumpForce.myValue;
                 jumpCount++;
             }
-            yield return wffu;
-        }
-    }
-
-    private IEnumerator Sprint()
-    {
-        canSprint = true;
-        while (canSprint)
-        {
+            
             if (Input.GetButtonDown("Fire3"))
             {
                 currentSpeed = fastSpeed;
@@ -103,7 +61,21 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 currentSpeed = normalSpeed;
             }
-            yield return wffu;
+            
+            lookDirection.Set(hInput, 0, vInput);
+
+            if (hInput > 0.05f || hInput < -0.05f ||vInput > 0.05f || vInput < -0.05f)
+            {
+                finalDirection.Set(lookDirection.x, 0, lookDirection.z);
+            }
+            
+            if (lookDirection != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(finalDirection);
+            }
+
+            movement.Set(hInput, yVar, vInput);
+            controller.Move(movement);
         }
     }
 
@@ -135,7 +107,7 @@ public class PlayerBehaviour : MonoBehaviour
             return;
         }
 
-        if (hit.moveDirection.y < -0.3)
+        if (hit.moveDirection.y < -0.3f)
         {
             return;
         }

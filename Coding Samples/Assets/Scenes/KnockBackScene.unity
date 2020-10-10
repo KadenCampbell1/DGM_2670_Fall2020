@@ -444,7 +444,6 @@ GameObject:
   - component: {fileID: 1069032253}
   - component: {fileID: 1069032252}
   - component: {fileID: 1069032251}
-  - component: {fileID: 1069032250}
   - component: {fileID: 1069032249}
   - component: {fileID: 1069032248}
   m_Layer: 0
@@ -466,6 +465,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad28a2bdc0c37941b4286f26978526a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookDirection: {x: 0, y: 0, z: 0}
+  finalDirection: {x: 0, y: 0, z: 0}
   normalSpeed: {fileID: 11400000, guid: a4333b16ead02b44799661f508ba82de, type: 2}
   fastSpeed: {fileID: 11400000, guid: 95eb4d10f670ae2459de38d26fe68d0b, type: 2}
   jumpForce: {fileID: 11400000, guid: 2a5c6e3b15c7f1449a59d1ef81234b74, type: 2}
@@ -489,19 +490,6 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &1069032250
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1069032247}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1069032251
 MeshRenderer:
