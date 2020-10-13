@@ -6,16 +6,16 @@ using UnityEngine;
 public class CharacterBehaviour : MonoBehaviour
 {
 	private CharacterController myController;
-	private Vector3 v3Movement, knockBackMovement = Vector3.zero;
+	private Vector3 v3Movement, knockBackMovement = Vector3.zero, lookDirection;
 	private float yAxisVar;
 
 	public float dodgeForce = 15f, 
 		myRotateSpeed = 150f, myRotateBoost = 100f,
-		myJumpForce = 5f, myGravity = -9.81f,
+		myGravity = -9.81f,
 		pushForce = 10f;
 	public bool drivingCar, canDodge;
 
-	public FloatData normalSpeed, fastSpeed, myCarSpeed;
+	public FloatData normalSpeed, fastSpeed, myCarSpeed, myJumpForce;
 	private FloatData currentSpeed;
 
 	public IntData playerJumpMax;
@@ -51,7 +51,7 @@ public class CharacterBehaviour : MonoBehaviour
 			
 			if (Input.GetButtonDown("Jump") && jumpCount < playerJumpMax.myValue)
 			{
-				yAxisVar = myJumpForce;
+				yAxisVar = myJumpForce.myValue;
 				jumpCount++;
 			}
 
@@ -72,11 +72,19 @@ public class CharacterBehaviour : MonoBehaviour
 			var verticalInput = Input.GetAxis("Vertical") * currentSpeed.myValue;
 			var horizontalInput = Input.GetAxis("Horizontal") * currentSpeed.myValue;
 			
-			
-			var lookDirection = new Vector3(horizontalInput / currentSpeed.myValue, 0f, verticalInput / currentSpeed.myValue);
+			lookDirection.Set(horizontalInput, 0, verticalInput);
+
+			if (lookDirection == Vector3.zero)
+			{
+				lookDirection.Set(0.0001f, 0, 0.0001f);
+			}
+        
+			if (horizontalInput > 0.5f || horizontalInput < -0.5f ||verticalInput > 0.5f || verticalInput < -0.5f)
+			{
+				transform.rotation = Quaternion.LookRotation(lookDirection);
+			}
 			
 			v3Movement.Set(horizontalInput, yAxisVar, verticalInput);
-			transform.rotation = Quaternion.LookRotation(lookDirection);
 		}
 		if (drivingCar)
 		{
