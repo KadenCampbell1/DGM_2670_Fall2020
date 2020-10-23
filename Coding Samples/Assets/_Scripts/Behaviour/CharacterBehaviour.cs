@@ -51,7 +51,7 @@ public class CharacterBehaviour : MonoBehaviour
 			
 			if (Input.GetButtonDown("Jump") && jumpCount < playerJumpMax.myValue)
 			{
-				yAxisVar = myJumpForce.myValue;
+				yAxisVar = myJumpForce.value;
 				jumpCount++;
 			}
 
@@ -69,8 +69,8 @@ public class CharacterBehaviour : MonoBehaviour
 			}
 			
 			
-			var verticalInput = Input.GetAxis("Vertical") * currentSpeed.myValue;
-			var horizontalInput = Input.GetAxis("Horizontal") * currentSpeed.myValue;
+			var verticalInput = Input.GetAxis("Vertical") * currentSpeed.value;
+			var horizontalInput = Input.GetAxis("Horizontal") * currentSpeed.value;
 			
 			lookDirection.Set(horizontalInput, 0, verticalInput);
 
@@ -88,7 +88,7 @@ public class CharacterBehaviour : MonoBehaviour
 		}
 		if (drivingCar)
 		{
-			var verticalInput = Input.GetAxis("Vertical") * myCarSpeed.myValue;
+			var verticalInput = Input.GetAxis("Vertical") * myCarSpeed.value;
 			v3Movement.Set(verticalInput, yAxisVar, 0);
 			
 			if (Input.GetButtonDown("Fire3"))

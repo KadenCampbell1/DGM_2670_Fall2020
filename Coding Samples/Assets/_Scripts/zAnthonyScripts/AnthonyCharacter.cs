@@ -42,7 +42,7 @@ public class AnthonyCharacter : MonoBehaviour
                 moveSpeed = normalSpeed;
             }
         
-            var vInput = Input.GetAxis("Vertical")*moveSpeed.myValue;
+            var vInput = Input.GetAxis("Vertical")*moveSpeed.value;
             
             movement.Set(vInput,yVar,0);
         

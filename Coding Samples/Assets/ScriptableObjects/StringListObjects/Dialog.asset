@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03013689a4e21ab4f90b544178eb2239, type: 3}
-  m_Name: CarSpeed
+  m_Script: {fileID: 11500000, guid: 5a3b28fe96d190c4392b915f11630aa0, type: 3}
+  m_Name: Dialog
   m_EditorClassIdentifier: 
-  value: 20
-  lessThanZeroEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  stringList:
+  - Welcome
+  - I have a quest
+  - Would you like it?
+  - 

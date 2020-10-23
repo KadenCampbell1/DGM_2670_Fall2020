@@ -15,7 +15,7 @@ public class DeathBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (objHealth.myValue <= 0)
+        if (objHealth.value <= 0)
         {
             objForDeath.gameObject.SetActive(false);
             if (objForDeath.name == "Character")
@@ -25,7 +25,7 @@ public class DeathBehaviour : MonoBehaviour
             if (objForDeath.name == "Character" && playerLives.myValue > 0)
             {
                 objForDeath.gameObject.transform.position = spawnLocation.myValue;
-                objHealth.myValue = respawnHealth.myValue;
+                objHealth.value = respawnHealth.value;
                 StartCoroutine(Wait(waitTime));
             }
             if (playerLives.myValue < 0)

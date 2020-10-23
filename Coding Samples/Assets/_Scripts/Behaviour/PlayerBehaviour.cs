@@ -38,8 +38,8 @@ public class PlayerBehaviour : MonoBehaviour
             
             yVar += gravity * Time.deltaTime;
 
-            var vInput = Input.GetAxis("Vertical") * currentSpeed.myValue * Time.deltaTime;
-            var hInput = Input.GetAxis("Horizontal") * currentSpeed.myValue * Time.deltaTime;
+            var vInput = Input.GetAxis("Vertical") * currentSpeed.value * Time.deltaTime;
+            var hInput = Input.GetAxis("Horizontal") * currentSpeed.value * Time.deltaTime;
             
             if (controller.isGrounded && movement.y < 0)
             {
@@ -49,7 +49,7 @@ public class PlayerBehaviour : MonoBehaviour
 
             if (Input.GetButtonDown("Jump") && jumpCount < playerJumpMax.myValue)
             {
-                yVar = jumpForce.myValue;
+                yVar = jumpForce.value;
                 jumpCount++;
             }
             

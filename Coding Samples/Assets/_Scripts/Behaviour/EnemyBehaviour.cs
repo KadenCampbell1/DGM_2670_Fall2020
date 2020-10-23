@@ -10,12 +10,12 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void Start()
     {
-        enemyHealth = enemyHealthData.myValue;
+        enemyHealth = enemyHealthData.value;
     }
 
     public void IncrementEnemyHealthFromSO(FloatData myFlt)
     {
-        enemyHealth += myFlt.myValue;
+        enemyHealth += myFlt.value;
     }
 
     private void OnTriggerEnter(Collider other)
