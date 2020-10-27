@@ -27,7 +27,8 @@ public class CharacterBehaviourBase : MonoBehaviour
         currentSpeed = normalSpeed;
     }
     
-    public void MoveCharacter()
+    //use virtual and override to replace code in inheriting scripts
+    protected virtual void MoveCharacter()
     	{
     		yAxisVar += myGravity * Time.deltaTime;
     
