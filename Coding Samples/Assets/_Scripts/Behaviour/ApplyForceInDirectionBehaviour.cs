@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,12 +8,20 @@ public class ApplyForceInDirectionBehaviour : MonoBehaviour
 {
     private Rigidbody rBody;
 
-    public float force = 30f;
+    public Vector3 forces = new Vector3(30f, 0, 0);
+    public bool canRunOnStart;
 
-    void Start()
+    private void Start()
     {
         rBody = GetComponent<Rigidbody>();
-        var forceDirection = new Vector3(force, 0, 0);
-        rBody.AddRelativeForce(forceDirection);
+        if (canRunOnStart)
+        {
+            OnApplyForce();
+        }
+    }
+
+    public void OnApplyForce()
+    {
+        rBody.AddRelativeForce(forces);
     }
 }

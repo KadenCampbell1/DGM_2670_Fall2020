@@ -8,9 +8,16 @@ public class InstancerBehaviour : MonoBehaviour
     public GameObject prefab;
     public Vector3Data rotationDirection;
 
-    public void Instance()
+    public void InstanceWithRotationDirection()
     {
         var location = transform.position;
         var newObj = Instantiate(prefab, location, Quaternion.Euler(rotationDirection.myValue));
+    }
+
+    public void InstanceObj()
+    {
+        var location = transform.position;
+        var rotation = transform.rotation;
+        var newObj = Instantiate(prefab, location, rotation);
     }
 }

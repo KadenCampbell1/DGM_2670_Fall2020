@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class FloatData : ScriptableObject
 {
     public float value;
-    public UnityEvent lessThanZeroEvent;
+    public UnityEvent lessThanZeroEvent, greaterThanOneEvent;
 
     public void SetValue(float number)
     {
@@ -23,6 +23,19 @@ public class FloatData : ScriptableObject
     public void IncrementFromScriptableObject(FloatData data)
     {
         value += data.value;
+    }
+
+    public void CompareValue()
+    {
+        if (value <= 0)
+        {
+            lessThanZeroEvent.Invoke();
+        }
+        
+        if (value >= 1)
+        {
+            greaterThanOneEvent.Invoke();
+        }
     }
 
     public void SetImageFillAmount(Image image)
