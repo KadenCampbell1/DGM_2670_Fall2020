@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class PigAnimStateBehaviour : MonoBehaviour
@@ -16,17 +13,17 @@ public class PigAnimStateBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetAxisRaw("Horizontal") == 1)
+        if (Input.GetKeyDown(KeyCode.D))
         {
             forwardEvent.Invoke();
         }
 
-        if (Input.GetAxisRaw("Horizontal") == -1)
+        if (Input.GetKeyDown(KeyCode.A))
         {
             backwardEvent.Invoke();
         }
 
-        if (!Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") == 0)
+        if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A))
         {
             idleEvent.Invoke();
         }

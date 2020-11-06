@@ -26,6 +26,11 @@ public class MonoEventsBehaviour : MonoBehaviour
         onEnableEvent.Invoke();
     }
 
+    public void DestroyObj(GameObject obj)
+    {
+        Destroy(obj);
+    }
+
     private IEnumerator OnTriggerEnter(Collider other)
     {
         yield return new WaitForSeconds(waitTime);
