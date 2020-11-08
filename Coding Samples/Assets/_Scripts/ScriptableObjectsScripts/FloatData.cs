@@ -43,19 +43,19 @@ public class FloatData : ScriptableObject
 
     public void SetImageFillAmount(Image image)
     {
-        if (value >= 0 || value <= 1)
-        {
-            image.fillAmount = value;
-        }
-
-        if (value <= 0)
-        {
-            lessThanZeroEvent.Invoke();
-        }
-
-        if (value >= 1)
-        {
-            greaterThanOneEvent.Invoke();
-        }
+        // if (value >= 0 || value <= 1)
+        // {
+        //     
+        // }
+        image.fillAmount = value;
+        // if (value <= 0)
+        // {
+        //     lessThanZeroEvent.Invoke();
+        // }
+        //
+        // if (value >= 1)
+        // {
+        //     greaterThanOneEvent.Invoke();
+        // }
     }
 }
