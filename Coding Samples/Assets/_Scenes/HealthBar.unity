@@ -502,7 +502,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  holdTime: 3
+  holdTime: 0.01
 --- !u!114 &554988067
 MonoBehaviour:
   m_ObjectHideFlags: 0
