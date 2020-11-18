@@ -6,13 +6,13 @@ using UnityEngine.AI;
 public class AIBrainData : ScriptableObject
 {
     public float health, speed;
-    public List<Vector3Data> points;
-    public Transform transform;
-    public MeshFilter mesh;
+    // public List<Vector3Data> points;
+    // public Transform transform;
+    public GameObject prefab;
 
 
     public virtual void Navigate(NavMeshAgent agent)
     {
-        agent.destination = transform.position;
+        // agent.destination = transform.position;
     }
 }

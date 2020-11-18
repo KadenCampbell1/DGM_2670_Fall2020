@@ -20,4 +20,11 @@ public class InstancerBehaviour : MonoBehaviour
         var rotation = transform.rotation;
         var newObj = Instantiate(prefab, location, rotation);
     }
+    
+    public void InstanceObj(GameObject obj)
+    {
+        var location = transform.position;
+        var rotation = transform.rotation;
+        var newObj = Instantiate(obj, location, rotation);
+    }
 }
