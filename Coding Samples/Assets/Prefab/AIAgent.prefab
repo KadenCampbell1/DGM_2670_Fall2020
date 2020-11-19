@@ -131,4 +131,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b3875b4644c6e642be3a56efb3b258f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameActionObj: {fileID: 11400000, guid: 943d8cfadcbcd464a895986aa72475c1, type: 2}
+  getTransformAction: {fileID: 11400000, guid: 943d8cfadcbcd464a895986aa72475c1, type: 2}
+  callForTransformAction: {fileID: 11400000, guid: 1e4c963dc5783474e9c68d86ca8de0c7, type: 2}
