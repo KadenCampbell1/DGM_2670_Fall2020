@@ -19,12 +19,25 @@ public class FloatData : ScriptableObject
     public void IncrementFromCustomValue(float incrementValue)
     {
         value += incrementValue;
+        
+        if (value <= 0.0001f && value >= -0.0001f)
+        {
+            value = 0;
+        }
+        
         incrementValueEvent.Invoke();
     }
 
     public void IncrementFromScriptableObject(FloatData data)
     {
         value += data.value;
+        
+        if (value <= 0.0001f && value >= -0.0001f)
+        {
+            value = 0;
+        }
+        
+        
         incrementValueEvent.Invoke();
     }
 
