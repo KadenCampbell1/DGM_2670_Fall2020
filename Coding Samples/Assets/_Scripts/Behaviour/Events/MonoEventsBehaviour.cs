@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class MonoEventsBehaviour : MonoBehaviour
 {
-    public UnityEvent startEvent, onEnableEvent, triggerEvent, playerTriggerCollision, enemyTriggerCollision, bulletTriggerCollision;
+    public UnityEvent awakeEvent, startEvent, onEnableEvent, triggerEvent, playerTriggerCollision, enemyTriggerCollision, bulletTriggerCollision, onDestroyEvent, onAppQuitEvent;
     public float waitTime = 0.1f;
     public bool repeatOnStart;
 
@@ -19,6 +19,11 @@ public class MonoEventsBehaviour : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
             startEvent.Invoke();
         }
+    }
+
+    private void Awake()
+    {
+        awakeEvent.Invoke();
     }
 
     private void OnEnable()
@@ -50,5 +55,15 @@ public class MonoEventsBehaviour : MonoBehaviour
         {
             bulletTriggerCollision.Invoke();
         }
+    }
+
+    private void OnDestroy()
+    {
+        onDestroyEvent.Invoke();
+    }
+
+    private void OnApplicationQuit()
+    {
+        onAppQuitEvent.Invoke();
     }
 }
